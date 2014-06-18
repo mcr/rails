@@ -217,9 +217,9 @@ module ActionController #:nodoc:
       template.instance_variable_get(:@_rendered)
     end
 
-    # A shortcut to the flash. Returns an empty hash if no session flash exists.
+    # A shortcut to the flash. Returns an empty flashhash if no session flash exists.
     def flash
-      session['flash'] || {}
+      session['flash'] || ActionController::Flash::FlashHash.new
     end
 
     # Do we have a flash?
