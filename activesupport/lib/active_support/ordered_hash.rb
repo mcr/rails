@@ -13,7 +13,9 @@ module ActiveSupport
 
     def to_yaml(opts = {})
       YAML.quick_emit(self, opts) do |out|
-        out.seq(taguri, to_yaml_style) do |seq|
+        # this was changed because newer psych does not take arguments like this.
+        #out.seq(taguri, to_yaml_style) do |seq|
+        out.seq do |seq|
           each do |k, v|
             seq.add(k => v)
           end
